@@ -1,0 +1,18 @@
+:root {
+    /* color palette */
+    --color-background-page: #f4f4f4;    /* light grey */
+    --color-background-header: #2c3e50; /* dark blue */
+    --color-text-default: #333333;      /* dark grey */
+    --color-text-header: #ffffff;       /* white */
+    --color-text-heading: #2c3e50;      /* dark blue for h2 */
+    --color-accent-link: #3498db;       /* bright blue */
+    --color-border-subtle: #cccccc;     /* light grey for footer border */
+  
+    /* font definitions */
+    --font-family-base: sans-serif;
+    --font-line-height-base: 1.6;
+  
+    /* spacing */
+    --spacing-medium: 20px;
+    --spacing-large: 40px; 
+  }
