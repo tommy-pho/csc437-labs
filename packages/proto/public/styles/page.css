@@ -161,3 +161,28 @@ ul ul, ol ol {
 li {
   margin-bottom: var(--spacing-small, 0.5rem);
 }
+
+/* Project list layout */
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: var(--spacing-large, 2rem);
+}
+
+.project-list article {
+    border: 1px solid var(--color-border-subtle, #ccc);
+    padding: var(--spacing-medium, 1rem);
+    border-radius: var(--size-radius-medium, 8px);
+    background-color: var(--color-background-card, white);
+}
+
+.project-list article h2 {
+    margin-top: 0; 
+    margin-bottom: var(--spacing-small, 0.5rem);
+    font-size: 1.25rem;
+}
+
+.project-list article p {
+    margin-bottom: 0;
+}
