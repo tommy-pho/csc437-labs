@@ -1,12 +1,10 @@
 body {
     background-color: var(--color-background-page); 
     color: var(--color-text-default);  
-
     font-family: var(--font-family-base);
     font-size: var(--size-type-body);     
     font-weight: var(--font-weight-normal);
     line-height: var(--font-line-height-base); 
-
     margin: 0;              
     padding: 0;              
 }
@@ -28,8 +26,8 @@ h2 {
     font-size: var(--size-type-h2); 
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-heading); 
-    margin-top: 30px;
-    margin-left: var(--spacing-medium); 
+    margin-top: var(--spacing-large);        
+    margin-left: var(--spacing-medium);      
 }
 
 a {
@@ -37,18 +35,9 @@ a {
     text-decoration: none; 
 }
 
-a:hover {
+a:hover,
+a:focus {
     text-decoration: underline; 
-}
-
-p, ul {
-    margin-left: var(--spacing-medium);
-    margin-right: var(--spacing-medium);
-    line-height: var(--font-line-height-base); 
-}
-
-ul {
-    padding-left: var(--spacing-large); 
 }
 
 svg.icon {
@@ -57,39 +46,24 @@ svg.icon {
     height: 1.2em;
     vertical-align: -0.2em;
     fill: currentColor;
-    margin-right: 0.3em;
+    margin-right: var(--spacing-small);    
 }
-
-footer {
-    text-align: center; 
-    margin-top: var(--spacing-large); 
-    border-top: 1px solid var(--color-border-subtle); 
-    padding-top: 10px;
-    padding-bottom: var(--spacing-medium);
-}
-
-footer p {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-/* Layout and structure */
 
 .page-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-  max-width: 75rem;
-  margin-inline: auto;
-  padding-inline: var(--spacing-medium, 1rem);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    max-width: var(--size-content-max-width);
+    margin-inline: auto;
+    padding-inline: var(--spacing-medium);
 }
 
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: var(--spacing-medium, 1rem); 
-    border-bottom: 1px solid var(--color-border-subtle, #ccc);
+    padding-block: var(--spacing-medium);
+    border-bottom: 1px solid var(--color-border-subtle, #ccc); 
 }
 
 .main-header h1 {
@@ -110,7 +84,7 @@ footer p {
 
 .main-nav ul {
     display: flex;
-    gap: var(--spacing-medium, 1rem);
+    gap: var(--spacing-medium);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -122,67 +96,99 @@ footer p {
 
 .main-nav a {
     text-decoration: none;
-    padding: var(--spacing-small, 0.5rem);
-}
-.main-nav a:hover,
-.main-nav a:focus {
-     text-decoration: underline;
+    padding: var(--spacing-small);
 }
 
 .main-content {
-  padding-block: var(--spacing-large, 2rem);
+    padding-block: var(--spacing-large);
 }
 
 .main-footer {
-  text-align: center; 
-  padding-block: var(--spacing-medium, 1rem); 
-  border-top: 1px solid var(--color-border-subtle, #ccc); 
-  margin-top: var(--spacing-large, 2rem);
+    text-align: center; 
+    padding-block: var(--spacing-medium);
+    margin-top: var(--spacing-large);
+    border-top: 1px solid var(--color-border-subtle, #ccc); 
+}
+
+.main-footer p {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: var(--spacing-medium, 1rem);
+    margin-bottom: var(--spacing-medium);
 }
 
 p {
-  margin-bottom: var(--spacing-medium, 1rem);
+    margin-bottom: var(--spacing-medium);
 }
 
 ul, ol {
-  margin-bottom: var(--spacing-medium, 1rem);
-  padding-left: var(--spacing-large, 2rem);
-  list-style: disc;
+    margin-bottom: var(--spacing-medium);
+    padding-left: var(--spacing-large);
+    list-style: disc;
 }
 
 ul ul, ol ol {
-  margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 li {
-  margin-bottom: var(--spacing-small, 0.5rem);
+    margin-bottom: var(--spacing-small);
 }
-
-/* Project list layout */
 
 .project-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: var(--spacing-large, 2rem);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-gutter, var(--spacing-large));
 }
 
 .project-list article {
-    border: 1px solid var(--color-border-subtle, #ccc);
-    padding: var(--spacing-medium, 1rem);
-    border-radius: var(--size-radius-medium, 8px);
+    border: 1px solid var(--color-border-subtle, #ccc); 
+    padding: var(--spacing-medium);
+    border-radius: var(--size-radius-medium);
     background-color: var(--color-background-card, white);
 }
 
 .project-list article h2 {
-    margin-top: 0; 
-    margin-bottom: var(--spacing-small, 0.5rem);
+    margin-top: 0;
+    margin-bottom: var(--spacing-small);
     font-size: 1.25rem;
 }
 
 .project-list article p {
     margin-bottom: 0;
+}
+
+@media (max-width: 768px) { 
+    .page-container {
+        padding-inline: var(--spacing-small); 
+    }
+    .main-header {
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: var(--spacing-medium); 
+    }
+    .main-nav ul {
+        flex-wrap: wrap; 
+        gap: var(--spacing-small);
+    }
+    .project-list {
+        grid-template-columns: 1fr; 
+        gap: var(--spacing-medium); 
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; } 
+    h2 { font-size: 1.4rem; }
+    .main-nav ul {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .main-nav a {
+        padding: var(--spacing-small) 0;
+        display: block; 
+    }
 }

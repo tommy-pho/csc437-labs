@@ -31,8 +31,16 @@
     /* base line height */
     --font-line-height-base: 1.6; 
     --font-line-height-heading: 1.2;
-    
+
     /* spacing */
-    --spacing-medium: 20px;
-    --spacing-large: 40px; 
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 1.5rem;
+    --spacing-xlarge: 2.5rem;
+    --spacing-gutter: var(--spacing-large);
+
+    --size-radius-small: 4px;
+    --size-radius-medium: 8px;
+    
+    --size-content-max-width: 75rem;
   }
