@@ -161,6 +161,8 @@ li {
     margin-bottom: 0;
 }
 
+/* responsive design */
+
 @media (max-width: 768px) { 
     .page-container {
         padding-inline: var(--spacing-small); 
