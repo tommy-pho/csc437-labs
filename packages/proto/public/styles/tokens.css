@@ -9,9 +9,29 @@
     --color-border-subtle: #cccccc;     /* light grey for footer border */
   
     /* font definitions */
-    --font-family-base: sans-serif;
-    --font-line-height-base: 1.6;
-  
+    --font-family-base: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    /* font weights */
+    --font-weight-thin: 100; 
+    --font-weight-extralight: 200;
+    --font-weight-light: 300; 
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+
+    /* font sizes */
+    --size-type-body: 1rem;
+    --size-type-h1: 2.5rem;
+    --size-type-h2: 1.75rem;
+    --size-type-small: 0.875rem;
+    
+    /* base line height */
+    --font-line-height-base: 1.6; 
+    --font-line-height-heading: 1.2;
+    
     /* spacing */
     --spacing-medium: 20px;
     --spacing-large: 40px; 
