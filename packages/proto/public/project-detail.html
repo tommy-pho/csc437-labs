@@ -1,35 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Project: Sample Project 1</title>
-
+<!doctype html> 
+<html lang="en"> 
+  <head>
+    <meta charset="utf-8" /> 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
+    <title>Project: Sample Project One</title>
+
+    <link rel="stylesheet" href="/styles/reset.css" /> 
     <link rel="stylesheet" href="/styles/tokens.css" /> 
     <link rel="stylesheet" href="/styles/page.css" /> 
-</head>
-<body>
-    <h1>Sample Project 1</h1>
+  </head>
+  <body>
+    
+    <div class="page-container"> 
 
-    <h2>Description</h2>
-    <p>This project demonstrates basic web development techniques.</p>
+      <header class="main-header"> 
+        
+        <h1>Project: Sample Project One</h1> 
+        
+        <nav class="main-nav"> 
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </nav>
+      </header>
 
-    <h2>Skills Used</h2> <!-- "Skills" showcased by project -->
-    <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript (Basic)</li>
-    </ul>
+      <main class="main-content"> 
+        
+        <section class="project-description">
+            <h2>Description</h2>
+            <p>More info</p>
+        </section>
 
-    <h2>Artifacts</h2> <!-- "Artifacts" related to project -->
-    <ul>
-        <li><a href="https://github.com/tommy-pho/placeholder" target="_blank">View Code on GitHub</a></li> 
-        <!-- Link to a GitHub repo -->
-    </ul>
+        <section class="skills-showcased"> 
+            <h2>Skills Showcased</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </section>
 
-    <p><a href="projects.html">Back to Projects List</a></p> <!-- Backlink -->
-</body>
+        <section class="project-artifacts"> 
+            <h2>Artifacts</h2>
+            <ul>
+                <li><a href="https://github.com/tommy-pho/repo" target="_blank">View Code on GitHub</a></li> 
+            </ul>
+        </section>
+
+         <p><a href="projects.html">« Back to Projects List</a></p> 
+
+      </main>
+
+      <footer class="main-footer"> 
+         <p>© 2025 Tommy Pho</p>
+      </footer>
+
+    </div>
+
+  </body>
 </html>

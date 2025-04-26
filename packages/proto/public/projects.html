@@ -1,25 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>My Projects</title>
-
+<!doctype html> 
+<html lang="en"> 
+  <head>
+    <meta charset="utf-8" /> 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
+    <title>My Projects</title>
+
+    <link rel="stylesheet" href="/styles/reset.css" /> 
     <link rel="stylesheet" href="/styles/tokens.css" /> 
     <link rel="stylesheet" href="/styles/page.css" /> 
-</head>
-<body>
-    <h1>My Projects</h1>
-
-    <p>Here are some things I've worked on:</p>
+  </head>
+  <body>
     
-    <ul>
-        <li><a href="project-detail.html">Sample Project One</a></li> <!-- Link to the single detail page -->
-    </ul>
+    <div class="page-container"> 
 
-    <p><a href="index.html">Back Home</a></p> <!-- Backlink -->
-</body>
+      <header class="main-header"> 
+        
+        <h1>My Projects</h1> 
+        
+        <nav class="main-nav"> 
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="projects.html">Projects</a></li>
+               <li><a href="resume.html">Resume</a></li>
+           </ul>
+       </nav>
+      </header>
+
+      <main class="main-content"> 
+        
+        <p>Here are some things I've worked on:</p>
+        
+        <div class="project-list"> 
+            <article>
+                <h2><a href="project-detail.html">Sample Project One</a></h2> 
+                <p>A brief description</p>
+            </article>
+            <article>
+                <h2><a href="#">Another Project</a></h2> 
+                <p>Description</p>
+            </article>
+        </div>
+
+        <p><a href="index.html">Back Home</a></p> 
+
+      </main>
+
+      <footer class="main-footer"> 
+         <p>© 2025 Tommy Pho</p>
+      </footer>
+
+    </div>
+
+  </body>
 </html>

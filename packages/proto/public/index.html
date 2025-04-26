@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Tommy Pho - Portfolio</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="/styles/tokens.css" /> 
-    <link rel="stylesheet" href="/styles/page.css" /> 
-</head>
-<body>
-    <h1>Tommy Pho</h1> 
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+  </head>
 
-    <h2>About Me</h2> 
-    <p>Welcome! I am a developer focused on creating cool web things.</p>
+  <body>
+    <div class="page-container">
+      <header class="main-header">
+        <h1>Tommy Pho</h1>
+        <nav class="main-nav">
+          <h2>Navigation</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+          </ul>
+        </nav>
+      </header>
 
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="projects.html">My Projects</a></li> 
-        <li><a href="resume.html">My Resume</a></li>   
-    </ul>
+      <main class="main-content">
+        <section id="about-me">
+          <h2>About Me</h2>
+          <p>Welcome! I am a developer focused on creating cool web things.</p>
+        </section>
 
-    <h2>Contact</h2> 
-    <p>
-        <svg class="icon" aria-hidden="true"><use href="/icons/sprite.svg#icon-email"></use></svg> 
-        Email: ttpho@calpoly.edu | <svg class="icon" aria-hidden="true"><use href="/icons/sprite.svg#icon-linkedin"></use></svg> <a href="https://www.linkedin.com/in/tommy-pho-283ab0239" target="_blank">LinkedIn</a></p> 
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-email"></use>
+            </svg>
+            Email: ttpho@calpoly.edu |
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-linkedin"></use>
+            </svg>
+            <a href="https://www.linkedin.com/in/tommy-pho-283ab0239" target="_blank">LinkedIn</a>
+          </p>
+        </section>
+      </main>
 
-    <footer>
-        <p style="text-align: center; margin-top: 40px; border-top: 1px solid #ccc; padding-top: 10px;">© 2025 Tommy Pho</p>
-    </footer>
-
-</body>
+      <footer class="main-footer">
+        <p>© 2025 Tommy Pho</p>
+      </footer>
+    </div>
+  </body>
 </html>
