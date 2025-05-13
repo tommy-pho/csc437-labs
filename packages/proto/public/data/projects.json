@@ -1,0 +1,20 @@
+[
+    {
+      "projectTitle": "Sample Project One",
+      "projectLink": "/project-detail.html",
+      "imgSrc": "/images/vr.jpg",
+      "description": "Description 1"
+    },
+    {
+      "projectTitle": "Sample Project Two",
+      "projectLink": "/project-detail.html", 
+      "imgSrc": "/images/vr.jpg",
+      "description": "Description 2"
+    },
+    {
+      "projectTitle": "Sample Project Three",
+      "projectLink": "#",
+      "imgSrc": "/images/vr.jpg",
+      "description": "Description 3"
+    }
+  ]

@@ -42,18 +42,7 @@
         <p>Here are some things I've worked on:</p>
 
         <div class="project-list">
-          <portfolio-project
-            project-title="Sample Project One"
-            project-link="/project-detail.html"
-            img-src="/images/vr.jpg"
-          >
-            <span slot="description">Description</span>
-          </portfolio-project>
-
-          <article>
-            <h2><a href="/project-detail.html">Another Project</a></h2>
-            <p>Description</p>
-          </article>
+          <project-list-loader src="/data/projects.json"></project-list-loader>
         </div>
 
         <p><a href="index.html">Back Home</a></p>
@@ -67,7 +56,11 @@
     <script type="module">
       import { define } from "@calpoly/mustang";
       import { PortfolioProjectElement } from "/src/portfolio-project.js";
-      define({ "portfolio-project": PortfolioProjectElement });
+      import { ProjectListLoaderElement } from "/src/project-list-loader.js";
+      define({ 
+        "portfolio-project": PortfolioProjectElement,
+        "project-list-loader": ProjectListLoaderElement 
+      });
     </script>
     <script src="/js/main.js" type="module"></script> 
   </body>

@@ -201,8 +201,8 @@ li {
 
 .project-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-gutter, var(--spacing-large));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: var(--spacing-gutter, 1.5rem); 
 }
 
 .project-list article {
