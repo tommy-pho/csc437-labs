@@ -1,12 +1,17 @@
 :root {
-    /* color palette */
+    /* light mode (default) tokens */
     --color-background-page: #f4f4f4;    /* light grey */
     --color-background-header: #2c3e50; /* dark blue */
+    --color-background-card: #ffffff; /* added for project cards */
     --color-text-default: #333333;      /* dark grey */
     --color-text-header: #ffffff;       /* white */
     --color-text-heading: #2c3e50;      /* dark blue for h2 */
     --color-accent-link: #3498db;       /* bright blue */
     --color-border-subtle: #cccccc;     /* light grey for footer border */
+
+    --color-slider-background: #ccc;
+    --color-slider-knob: white;
+    --color-slider-active-background: var(--color-accent-link);
   
     /* font definitions */
     --font-family-base: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -43,4 +48,21 @@
     --size-radius-medium: 8px;
     
     --size-content-max-width: 75rem;
-  }
+}
+
+/* dark mode overrides */
+body.dark-mode {
+    --color-background-page: #1a1a1a;
+    --color-background-header: #111111;
+    --color-background-card: #2a2a2a;
+    --color-text-default: #e0e0e0;
+    --color-text-header: #e0e0e0;
+    --color-text-heading: #bb86fc;
+    --color-accent-link: #90caf9;
+    --color-border-subtle: #444444;
+  
+    --color-slider-background: #555;
+    --color-slider-knob: #ccc;
+    --color-slider-active-background: var(--color-text-heading);
+}
+  

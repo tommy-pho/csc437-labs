@@ -98,7 +98,7 @@ svg.icon {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--color-slider-background, #ccc);
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 20px;
@@ -111,14 +111,14 @@ svg.icon {
     width: 16px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: var(--color-slider-knob, white);
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: var(--color-accent-link);
+    background-color: var(--color-slider-active-background, var(--color-accent-link));
 }
 
 input:focus + .slider {
@@ -209,7 +209,7 @@ li {
     border: 1px solid var(--color-border-subtle, #ccc); 
     padding: var(--spacing-medium);
     border-radius: var(--size-radius-medium);
-    background-color: var(--color-background-card, white);
+    background-color: var(--color-background-card);
 }
 
 .project-list article h2 {
