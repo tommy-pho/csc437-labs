@@ -1,3 +1,5 @@
+// involves an event listener on the checkbox that dispatches a new, custom event
+
 const themeCheckbox = document.getElementById('theme-checkbox');
 const themeSwitchLabel = document.querySelector('.theme-switch');
 
