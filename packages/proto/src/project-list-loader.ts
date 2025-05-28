@@ -38,27 +38,30 @@ export class ProjectListLoaderElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.src) {
-      this._fetchProjects(this.src);
-    } else {
-      this._error = "No data source specified for project list.";
-      this._isLoading = false;
-    }
+    this._fetchProjects("/api/projects"); 
   }
 
-  async _fetchProjects(src: string) {
+  async _fetchProjects(apiUrl: string) {
     this._isLoading = true;
     this._error = null;
     try {
-      const response = await fetch(src);
+      const response = await fetch(apiUrl);
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        let errorText = `HTTP error! status: ${response.status}`;
+        try {
+            const errorData = await response.text();
+            errorText += ` - ${errorData}`;
+        } catch (e) { /* ignore if can't parse error body */ }
+        throw new Error(errorText);
       }
       const data = await response.json();
       this._projects = data as Project[];
+      if (this._projects.length === 0) {
+          // this._error = "No projects returned from the API."; // Or handle as "No projects found" in render
+      }
     } catch (e) {
-      console.error("Failed to load projects:", e);
-      this._error = `Failed to load projects. ${e instanceof Error ? e.message : String(e)}`;
+      console.error("Failed to load projects from API:", e);
+      this._error = `Failed to load projects from API. ${e instanceof Error ? e.message : String(e)}`;
     } finally {
       this._isLoading = false;
     }

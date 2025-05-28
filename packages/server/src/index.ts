@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
-import { connect } from "./services/mongo";
+import { connect as connectDB } from "./services/mongo";
 import ProjectService from "./services/project-svc.js";
+
+const DBNAME = process.env.DB_NAME || "portfolioDB";
+connectDB(DBNAME);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,5 +29,3 @@ app.get("/api/projects", (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
-connect("photon");
