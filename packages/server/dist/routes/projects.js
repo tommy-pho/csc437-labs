@@ -5,6 +5,10 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -21,20 +25,34 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var projects_exports = {};
+__export(projects_exports, {
+  default: () => projects_default
+});
+module.exports = __toCommonJS(projects_exports);
 var import_express = __toESM(require("express"));
-var import_mongo = require("./services/mongo");
-var import_projects = __toESM(require("./routes/projects.js"));
-const DBNAME = process.env.DB_NAME || "portfolioDB";
-(0, import_mongo.connect)(DBNAME);
-const app = (0, import_express.default)();
-const port = process.env.PORT || 3e3;
-const staticDir = process.env.STATIC || "public";
-app.use(import_express.default.static(staticDir));
-app.use(import_express.default.json());
-app.use("/api/projects", import_projects.default);
-app.get("/hello", (req, res) => {
-  res.send("Hello, World from Express Server!");
+var import_project_svc = __toESM(require("../services/project-svc.js"));
+const router = import_express.default.Router();
+router.get("/", (req, res) => {
+  import_project_svc.default.index().then((projects) => {
+    res.status(200).json(projects);
+  }).catch((err) => {
+    console.error("Error fetching projects:", err);
+    res.status(500).send("Error fetching projects from database.");
+  });
 });
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  import_project_svc.default.get(id).then((project) => {
+    if (project) {
+      res.status(200).json(project);
+    } else {
+      res.status(404).send("Project not found");
+    }
+  }).catch((err) => {
+    console.error(`Error fetching project with id ${id}:`, err);
+    res.status(500).send("Error fetching project.");
+  });
 });
+var projects_default = router;
