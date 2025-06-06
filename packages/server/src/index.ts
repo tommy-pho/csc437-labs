@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { connect as connectDB } from "./services/mongo";
 import ProjectService from "./services/project-svc.js";
 import projectsRouter from "./routes/projects.js";
+import authRouter from "./routes/auth.js";
 
 const DBNAME = process.env.DB_NAME || "portfolioDB";
 connectDB(DBNAME);
@@ -14,6 +15,9 @@ app.use(express.static(staticDir));
 
 // middleware
 app.use(express.json());
+
+// mount the auth router
+app.use("/auth", authRouter);
 
 // mount the router
 app.use("/api/projects", projectsRouter);
