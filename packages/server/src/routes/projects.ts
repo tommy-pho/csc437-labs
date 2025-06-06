@@ -33,4 +33,52 @@ router.get("/:id", (req: Request, res: Response) => {
         });
 });
 
+// POST /api/projects - Create a new project
+router.post("/", (req: Request, res: Response) => {
+    const newProject = req.body as Project; // Get project data from request body
+    ProjectService.create(newProject)
+        .then((project) => {
+            res.status(201).json(project); // 201 Created
+        })
+        .catch((err) => {
+            console.error("Error creating project:", err);
+            res.status(500).send("Error creating project.");
+        });
+});
+
+// PUT /api/projects/:id - Update a project
+router.put("/:id", (req: Request, res: Response) => {
+    const { id } = req.params;
+    const newProjectData = req.body as Partial<Project>;
+    ProjectService.update(id, newProjectData)
+        .then((updatedProject) => {
+            if (updatedProject) {
+                res.status(200).json(updatedProject);
+            } else {
+                res.status(404).send("Project not found, cannot update.");
+            }
+        })
+        .catch((err) => {
+            console.error(`Error updating project ${id}:`, err);
+            res.status(500).send("Error updating project.");
+        });
+});
+
+// DELETE /api/projects/:id - Delete a project
+router.delete("/:id", (req: Request, res: Response) => {
+    const { id } = req.params;
+    ProjectService.remove(id)
+        .then((deletedProject) => {
+            if (deletedProject) {
+                res.status(204).end(); // 204 No Content
+            } else {
+                res.status(404).send("Project not found, cannot delete.");
+            }
+        })
+        .catch((err) => {
+            console.error(`Error deleting project ${id}:`, err);
+            res.status(500).send("Error deleting project.");
+        });
+});
+
 export default router;

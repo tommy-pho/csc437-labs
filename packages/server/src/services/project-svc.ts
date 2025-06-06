@@ -32,4 +32,12 @@ function create(project: Project): Promise<Project> {
   return p.save();
 }
 
-export default { index, get, getByTitle, create };
+function update(id: string, project: Partial<Project>): Promise<Project | null> {
+    return ProjectModel.findByIdAndUpdate(id, project, { new: true }).exec();
+}
+
+function remove(id: string): Promise<Project | null> {
+  return ProjectModel.findByIdAndDelete(id).exec();
+}
+
+export default { index, get, getByTitle, create, update, remove };

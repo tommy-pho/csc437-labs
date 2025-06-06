@@ -55,4 +55,10 @@ function create(project) {
   const p = new ProjectModel(project);
   return p.save();
 }
-var project_svc_default = { index, get, getByTitle, create };
+function update(id, project) {
+  return ProjectModel.findByIdAndUpdate(id, project, { new: true }).exec();
+}
+function remove(id) {
+  return ProjectModel.findByIdAndDelete(id).exec();
+}
+var project_svc_default = { index, get, getByTitle, create, update, remove };

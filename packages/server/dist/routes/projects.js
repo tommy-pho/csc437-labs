@@ -55,4 +55,40 @@ router.get("/:id", (req, res) => {
     res.status(500).send("Error fetching project.");
   });
 });
+router.post("/", (req, res) => {
+  const newProject = req.body;
+  import_project_svc.default.create(newProject).then((project) => {
+    res.status(201).json(project);
+  }).catch((err) => {
+    console.error("Error creating project:", err);
+    res.status(500).send("Error creating project.");
+  });
+});
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const newProjectData = req.body;
+  import_project_svc.default.update(id, newProjectData).then((updatedProject) => {
+    if (updatedProject) {
+      res.status(200).json(updatedProject);
+    } else {
+      res.status(404).send("Project not found, cannot update.");
+    }
+  }).catch((err) => {
+    console.error(`Error updating project ${id}:`, err);
+    res.status(500).send("Error updating project.");
+  });
+});
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  import_project_svc.default.remove(id).then((deletedProject) => {
+    if (deletedProject) {
+      res.status(204).end();
+    } else {
+      res.status(404).send("Project not found, cannot delete.");
+    }
+  }).catch((err) => {
+    console.error(`Error deleting project ${id}:`, err);
+    res.status(500).send("Error deleting project.");
+  });
+});
 var projects_default = router;
