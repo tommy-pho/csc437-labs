@@ -40,3 +40,32 @@ if(themeCheckbox) {
 }
 
 console.log('Theme switcher (custom event version) script loaded.');
+
+// Project Detail Dynamic Loader
+if (window.location.pathname.endsWith('project-detail.html')) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id) {
+    fetch(`/api/projects/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('mu:auth:jwt') || ''}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch project');
+        return res.json();
+      })
+      .then(project => {
+        if (project) {
+          document.querySelector('h1').textContent = `Project: ${project.projectTitle}`;
+          document.querySelector('.project-description p').textContent = project.description;
+          // Optionally update skills and artifacts if available in project
+        }
+      })
+      .catch(err => {
+        document.querySelector('.project-description p').textContent = 'Failed to load project details.';
+      });
+  } else {
+    document.querySelector('.project-description p').textContent = 'No project specified.';
+  }
+}

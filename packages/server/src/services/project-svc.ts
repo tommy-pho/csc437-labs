@@ -9,6 +9,8 @@ const ProjectSchema = new Schema<ProjectDocument>(
     projectLink: { type: String, required: true, trim: true },
     imgSrc: { type: String, trim: true },
     description: { type: String, required: true, trim: true },
+    skills: [{ type: String }],
+    artifacts: [{ label: String, url: String }],
   },
   { collection: "portfolio_projects" }
 );

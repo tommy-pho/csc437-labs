@@ -95,10 +95,11 @@ export class ProjectListLoaderElement extends LitElement {
   }
 
   renderProject(project: Project) {
+    const detailLink = project._id ? `project-detail.html?id=${project._id}` : "project-detail.html";
     return html`
       <portfolio-project
         project-title="${project.projectTitle}"
-        project-link="${project.projectLink}"
+        project-link="${detailLink}"
         img-src="${project.imgSrc || ''}"
       >
         <span slot="description">${project.description}</span>
