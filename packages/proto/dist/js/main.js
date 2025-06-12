@@ -59,7 +59,42 @@ if (window.location.pathname.endsWith('project-detail.html')) {
         if (project) {
           document.querySelector('h1').textContent = `Project: ${project.projectTitle}`;
           document.querySelector('.project-description p').textContent = project.description;
-          // Optionally update skills and artifacts if available in project
+          // Populate skills
+          const skillsList = document.getElementById('skills-list');
+          if (skillsList) {
+            skillsList.innerHTML = '';
+            if (Array.isArray(project.skills) && project.skills.length > 0) {
+              project.skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsList.appendChild(li);
+              });
+            } else {
+              const li = document.createElement('li');
+              li.textContent = 'No skills listed.';
+              skillsList.appendChild(li);
+            }
+          }
+          // Populate artifacts
+          const artifactsList = document.getElementById('artifacts-list');
+          if (artifactsList) {
+            artifactsList.innerHTML = '';
+            if (Array.isArray(project.artifacts) && project.artifacts.length > 0) {
+              project.artifacts.forEach(artifact => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = artifact.url;
+                a.target = '_blank';
+                a.textContent = artifact.label;
+                li.appendChild(a);
+                artifactsList.appendChild(li);
+              });
+            } else {
+              const li = document.createElement('li');
+              li.textContent = 'No artifacts listed.';
+              artifactsList.appendChild(li);
+            }
+          }
         }
       })
       .catch(err => {

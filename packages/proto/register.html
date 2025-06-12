@@ -4,15 +4,12 @@
     <meta charset="utf-8" />
     <title>Register - Portfolio</title>
     
-    <!-- Link your standard CSS files -->
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
     
-    <!-- Main script to define the custom elements used on this page -->
     <script type="module">
         import { define, Auth } from "@calpoly/mustang";
-        // It re-uses the same login-form component, just points it to a different API
         import { LoginFormElement } from "/src/auth/login-form.js";
 
         define({
@@ -22,18 +19,10 @@
     </script>
 </head>
 <body>
-    <!-- The <mu-auth> wrapper is still needed to handle the token after a successful registration -->
     <mu-auth provides="portfolio:auth">
         <main class="page-container" style="max-width: 400px; margin-top: 5rem;">
             <h1>Register New Account</h1>
-            
-            <!-- 
-              This is the key difference from login.html:
-              - The `api` attribute points to "/auth/register"
-              - The `redirect` attribute still points to the homepage after successful registration/login
-            -->
             <login-form api="/auth/register" redirect="/"></login-form>
-            
             <p style="margin-top: 1rem; text-align: center;">
                 Already have an account? <a href="/login.html">Login here</a>
             </p>
