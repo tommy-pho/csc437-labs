@@ -10,6 +10,8 @@ interface Project {
   projectLink: string;
   imgSrc?: string;
   description: string;
+  skills?: string[];
+  artifacts?: string[];
 }
 
 export class ProjectListLoaderElement extends LitElement {
@@ -101,6 +103,8 @@ export class ProjectListLoaderElement extends LitElement {
         project-title="${project.projectTitle}"
         project-link="${detailLink}"
         img-src="${project.imgSrc || ''}"
+        .skills="${project.skills || []}"
+        .artifacts="${project.artifacts || []}"
       >
         <span slot="description">${project.description}</span>
       </portfolio-project>

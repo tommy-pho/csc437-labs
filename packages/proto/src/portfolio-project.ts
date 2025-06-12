@@ -12,6 +12,12 @@ export class PortfolioProjectElement extends LitElement {
   @property({ type: String, attribute: 'img-src' })
   imgSrc = '';
 
+  @property({ type: Array, attribute: 'skills' })
+  skills: string[] = [];
+
+  @property({ type: Array, attribute: 'artifacts' })
+  artifacts: { label: string; url: string }[] = [];
+
   static styles = [
     resetStyles,
     css`
@@ -75,6 +81,26 @@ export class PortfolioProjectElement extends LitElement {
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
+      .skills-list, .artifacts-list {
+        margin-top: var(--spacing-small, 0.5rem);
+        font-size: 0.8rem;
+        color: var(--color-text-secondary);
+      }
+
+      .skills-list span, .artifacts-list a {
+        display: inline-block;
+        margin-right: var(--spacing-small, 0.5rem);
+      }
+
+      .artifacts-list a {
+        color: var(--color-accent-link);
+        text-decoration: none;
+      }
+
+      .artifacts-list a:hover {
+        text-decoration: underline;
+      }
     `
   ];
 
@@ -92,6 +118,16 @@ export class PortfolioProjectElement extends LitElement {
         <div class="description-content">
           <slot name="description"></slot>
         </div>
+        ${this.skills.length > 0 ? html`
+          <div class="skills-list">
+            ${this.skills.map(skill => html`<span>${skill}</span>`)}
+          </div>
+        ` : ''}
+        ${this.artifacts.length > 0 ? html`
+          <div class="artifacts-list">
+            ${this.artifacts.map(artifact => html`<a href="${artifact.url}" target="_blank">${artifact.label}</a>`)}
+          </div>
+        ` : ''}
       </div>
     `;
   }
