@@ -1,0 +1,24 @@
+<!-- packages/proto/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login - Portfolio</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+  <script type="module" crossorigin src="/assets/login-BOmf9i2g.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/reset.css-DXFb3TfP.js">
+  <link rel="modulepreload" crossorigin href="/assets/login-form-CunASEsA.js">
+</head>
+<body>
+    <mu-auth provides="portfolio:auth">
+        <main class="page-container" style="max-width: 400px;">
+            <h1>Login</h1>
+            <login-form api="/auth/login" redirect="/"></login-form>
+            <p>Don't have an account? <a href="/register.html">Register here</a></p>
+        </main>
+    </mu-auth>
+</body>
+</html>

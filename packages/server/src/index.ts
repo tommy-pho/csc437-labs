@@ -16,14 +16,16 @@ app.use(express.static(staticDir));
 // middleware
 app.use(express.json());
 
-// mount the auth router
+app.use((req, res, next) => {
+  console.log(`Request Received: ${req.method} ${req.path}`);
+  next();
+});
+
+// Public auth routes
 app.use("/auth", authRouter);
 
-// mount the protected router with middleware
+// Protected data routes
 app.use("/api/projects", authenticateUser, projectsRouter);
-
-// mount the router
-app.use("/api/projects", projectsRouter);
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("Hello, World from Express Server!");

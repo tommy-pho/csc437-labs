@@ -1,0 +1,29 @@
+<!-- packages/proto/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login - Portfolio</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+</head>
+<body>
+    <mu-auth provides="portfolio:auth">
+        <main class="page-container" style="max-width: 400px;">
+            <h1>Login</h1>
+            <login-form api="/auth/login" redirect="/"></login-form>
+            <p>Don't have an account? <a href="/register.html">Register here</a></p>
+        </main>
+    </mu-auth>
+    <script type="module">
+        import { define, Auth } from "@calpoly/mustang";
+        import { LoginFormElement } from "/src/auth/login-form.js";
+
+        define({
+            "mu-auth": Auth.Provider,
+            "login-form": LoginFormElement
+        });
+    </script>
+</body>
+</html>

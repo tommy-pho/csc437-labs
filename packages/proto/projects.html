@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-    >
+    />
 
     <title>My Projects</title>
 
@@ -18,50 +18,60 @@
   </head>
 
   <body>
-    <div class="page-container">
-      <header class="main-header">
-        <h1>My Projects</h1>
+    <mu-auth provides="portfolio:auth">
+      <protected-content>
+        <div class="page-container">
+          <header class="main-header">
+            <h1>My Projects</h1>
 
-        <nav class="main-nav">
-          <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/projects.html">Projects</a></li>
-            <li><a href="/resume.html">Resume</a></li>
-          </ul>
-        </nav>
+            <nav class="main-nav">
+              <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/resume.html">Resume</a></li>
+              </ul>
+            </nav>
 
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="theme-checkbox">
-            <input type="checkbox" id="theme-checkbox" autocomplete="off" />
-            <div class="slider round"></div>
-          </label>
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="theme-checkbox">
+                <input type="checkbox" id="theme-checkbox" autocomplete="off" />
+                <div class="slider round"></div>
+              </label>
+            </div>
+          </header>
+
+          <main class="main-content">
+            <p>Here are some things I've worked on:</p>
+
+            <div class="project-list">
+              <project-list-loader></project-list-loader>
+            </div>
+
+            <p><a href="index.html">Back Home</a></p>
+          </main>
+
+          <footer class="main-footer">
+            <p>© 2025 Tommy Pho</p>
+          </footer>
         </div>
-      </header>
-
-      <main class="main-content">
-        <p>Here are some things I've worked on:</p>
-
-        <div class="project-list">
-          <project-list-loader></project-list-loader>
-        </div>
-
-        <p><a href="index.html">Back Home</a></p>
-      </main>
-
-      <footer class="main-footer">
-        <p>© 2025 Tommy Pho</p>
-      </footer>
-    </div>
+      </protected-content>
+    </mu-auth>
 
     <script type="module">
-      import { define } from "@calpoly/mustang";
-      import { PortfolioProjectElement } from "/src/portfolio-project.js";
+      import { define, Auth } from "@calpoly/mustang";
+      import { ProtectedContentElement } from "/src/protected-content.js";
       import { ProjectListLoaderElement } from "/src/project-list-loader.js";
-      define({ 
-        "portfolio-project": PortfolioProjectElement,
-        "project-list-loader": ProjectListLoaderElement 
+      import { PortfolioProjectElement } from "/src/portfolio-project.js";
+
+      define({
+        "mu-auth": Auth.Provider,
+        "protected-content": ProtectedContentElement,
+        "project-list-loader": ProjectListLoaderElement
       });
+
+      customElements.define("portfolio-project", PortfolioProjectElement);
     </script>
-    <script src="/js/main.js" type="module"></script> 
+
+    <script src="/js/main.js" type="module"></script>
   </body>
 </html>

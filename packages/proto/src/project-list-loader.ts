@@ -1,9 +1,11 @@
 import { html, css, LitElement } from "lit";
-import { property, state } from "lit/decorators.js";
+import { state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 import resetStyles from "./styles/reset.css.js";
 import "./portfolio-project.js";
 
 interface Project {
+  _id?: string;
   projectTitle: string;
   projectLink: string;
   imgSrc?: string;
@@ -17,15 +19,13 @@ export class ProjectListLoaderElement extends LitElement {
       :host {
         display: block;
       }
-      .loading-message, .error-message {
+      .loading-message,
+      .error-message {
         padding: var(--spacing-medium);
         text-align: center;
       }
-    `
+    `,
   ];
-
-  @property({ type: String })
-  src?: string;
 
   @state()
   private _projects: Project[] = [];
@@ -36,32 +36,59 @@ export class ProjectListLoaderElement extends LitElement {
   @state()
   private _error: string | null = null;
 
+  @state()
+  private _user: Auth.User | null = null;
+
+  private _authObserver = new Observer<Auth.Model>(this, "portfolio:auth");
+
+  private get authorization() {
+    if (this._user && "token" in this._user) {
+      return { Authorization: `Bearer ${this._user.token}` };
+    }
+    return {};
+  }
+
   connectedCallback() {
     super.connectedCallback();
-    this._fetchProjects("/api/projects"); 
+    this._authObserver.observe(({ user }) => {
+      this._user = user || null;
+
+      if (this._user?.authenticated) {
+        this._fetchProjects("/api/projects");
+      } else {
+        this._projects = [];
+      }
+    });
   }
 
   async _fetchProjects(apiUrl: string) {
     this._isLoading = true;
     this._error = null;
     try {
-      const response = await fetch(apiUrl);
+      const options: RequestInit = {};
+      const authHeaders = this.authorization;
+      if (authHeaders.Authorization) {
+        options.headers = authHeaders;
+      }
+
+      const response = await fetch(apiUrl, options);
+
       if (!response.ok) {
         let errorText = `HTTP error! status: ${response.status}`;
         try {
-            const errorData = await response.text();
-            errorText += ` - ${errorData}`;
-        } catch (e) { /* ignore if can't parse error body */ }
+          const errorData = await response.text();
+          errorText += ` - ${errorData}`;
+        } catch (e) {}
         throw new Error(errorText);
       }
+
       const data = await response.json();
       this._projects = data as Project[];
-      if (this._projects.length === 0) {
-          // this._error = "No projects returned from the API."; // Or handle as "No projects found" in render
-      }
     } catch (e) {
       console.error("Failed to load projects from API:", e);
-      this._error = `Failed to load projects from API. ${e instanceof Error ? e.message : String(e)}`;
+      this._error = `Failed to load projects from API. ${
+        e instanceof Error ? e.message : String(e)
+      }`;
     } finally {
       this._isLoading = false;
     }
@@ -72,7 +99,7 @@ export class ProjectListLoaderElement extends LitElement {
       <portfolio-project
         project-title="${project.projectTitle}"
         project-link="${project.projectLink}"
-        img-src="${project.imgSrc || ''}" 
+        img-src="${project.imgSrc || ''}"
       >
         <span slot="description">${project.description}</span>
       </portfolio-project>
@@ -80,6 +107,14 @@ export class ProjectListLoaderElement extends LitElement {
   }
 
   override render() {
+    if (!this._user) {
+      return html`<p class="loading-message">Authenticating...</p>`;
+    }
+
+    if (!this._user.authenticated) {
+      return html`<p class="loading-message">Please log in to view projects.</p>`;
+    }
+
     if (this._isLoading) {
       return html`<p class="loading-message">Loading projects...</p>`;
     }
@@ -92,8 +127,6 @@ export class ProjectListLoaderElement extends LitElement {
       return html`<p class="loading-message">No projects found.</p>`;
     }
 
-    return html`
-      ${this._projects.map(project => this.renderProject(project))}
-    `;
+    return html`${this._projects.map((project) => this.renderProject(project))}`;
   }
 }

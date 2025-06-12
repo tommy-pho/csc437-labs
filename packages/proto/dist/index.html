@@ -14,55 +14,64 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+    <script type="module" crossorigin src="/assets/main-B6wxb1QH.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/assets/reset.css-DXFb3TfP.js">
+    <link rel="modulepreload" crossorigin href="/assets/project-list-loader-BgrNQrpS.js">
   </head>
 
   <body>
-    <div class="page-container">
-      <header class="main-header">
-        <h1>Tommy Pho</h1>
-        <nav class="main-nav">
-          <h2>Navigation</h2>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="resume.html">Resume</a></li>
-          </ul>
-        </nav>
+    <mu-auth provides="portfolio:auth">
+      <protected-content>
+        <div class="page-container">
+          <header class="main-header">
+            <h1>Tommy Pho</h1>
+            <nav class="main-nav">
+              <h2>Navigation</h2>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+              </ul>
+            </nav>
 
-        <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="theme-checkbox">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="theme-checkbox">
                 <input type="checkbox" id="theme-checkbox" autocomplete="off" />
                 <div class="slider round"></div>
-            </label>
+              </label>
+            </div>
+          </header>
+
+          <main class="main-content">
+            <section id="about-me">
+              <h2>About Me</h2>
+              <img src="/images/profile.jpg" alt="Profile photo" style="max-width: 200px; border-radius: 50%; margin-bottom: 1rem;" />
+              <p>Welcome! I am a developer focused on creating cool web things.</p>
+            </section>
+
+            <section id="contact">
+              <h2>Contact</h2>
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons/sprite.svg#icon-email"></use>
+                </svg>
+                Email: ttpho@calpoly.edu |
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons/sprite.svg#icon-linkedin"></use>
+                </svg>
+                <a href="https://www.linkedin.com/in/tommy-pho/" target="_blank">LinkedIn</a>
+              </p>
+            </section>
+          </main>
+
+          <footer class="main-footer">
+            <p>© 2025 Tommy Pho</p>
+          </footer>
         </div>
-      </header>
+      </protected-content>
+    </mu-auth>
 
-      <main class="main-content">
-        <section id="about-me">
-          <h2>About Me</h2>
-          <p>Welcome! I am a developer focused on creating cool web things.</p>
-        </section>
-
-        <section id="contact">
-          <h2>Contact</h2>
-          <p>
-            <svg class="icon" aria-hidden="true">
-              <use href="/icons/sprite.svg#icon-email"></use>
-            </svg>
-            Email: ttpho@calpoly.edu |
-            <svg class="icon" aria-hidden="true">
-              <use href="/icons/sprite.svg#icon-linkedin"></use>
-            </svg>
-            <a href="https://www.linkedin.com/in/tommy-pho-283ab0239" target="_blank">LinkedIn</a>
-          </p>
-        </section>
-      </main>
-
-      <footer class="main-footer">
-        <p>© 2025 Tommy Pho</p>
-      </footer>
-    </div>
-    <script src="/js/main.js" type="module"></script> 
+    <script src="/js/main.js" type="module"></script>
   </body>
 </html>

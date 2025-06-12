@@ -32,9 +32,12 @@ const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
 app.use(import_express.default.json());
+app.use((req, res, next) => {
+  console.log(`Request Received: ${req.method} ${req.path}`);
+  next();
+});
 app.use("/auth", import_auth.default);
 app.use("/api/projects", import_auth.authenticateUser, import_projects.default);
-app.use("/api/projects", import_projects.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World from Express Server!");
 });

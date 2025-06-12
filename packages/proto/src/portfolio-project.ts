@@ -96,3 +96,5 @@ export class PortfolioProjectElement extends LitElement {
     `;
   }
 }
+
+customElements.define("portfolio-project", PortfolioProjectElement);
